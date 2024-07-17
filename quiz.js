@@ -1,14 +1,25 @@
+// Function to check the answer
 function checkAnswer() {
-    const correctanswer = '4';
-    const userAnswer =
-    document.querySelector('input[name="quiz"]:checked').value;
-    const feedbackElement = document.getElementById('feedback');
-    if (userAnswer == correctanswer) {
-        feedbackElement.textContent = "Correct! Well done.";
+    const correctAnswer = '4';
+    const userAnswer = document.querySelector('input[name="quiz"]:checked')?.value;
+
+    if (userAnswer === correctAnswer) {
+        displayFeedback("Correct! Well done.");
     } else {
-        feedbackElement.textContent = "That's incorrect. Try again!";
+        displayFeedback("That's incorrect. Try again!");
     }
 }
-const submitButton = document.getElementById('submit-answer');
-submitButton.addEventListener('click', checkAnswer);
 
+// Function to display feedback
+function displayFeedback(message) {
+    const feedbackElement = document.getElementById('feedback');
+    if (feedbackElement) {
+        feedbackElement.textContent = message;
+    }
+}
+
+// Add event listener to submit button
+const submitButton = document.getElementById('submit-answer');
+if (submitButton) {
+    submitButton.addEventListener('click', checkAnswer);
+}
